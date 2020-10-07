@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>English to Sign Language Converter</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="English to Sign Language Converter">
+  <meta name="description" content="Online Convert English to Sign Language">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-4 sidenav">
+      <h4>English Sentence</h4>
+        <textarea class="form-control" id="keys" rows="20"></textarea>
+    </div>
+
+    <div class="col-sm-8">
+      <h4><small>Sign Language Translator</small></h4>
+      <hr>
+      <p id="signdata"></p>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+function forward(text) {
+  $("#signdata").html("");
+  
+  for(var i = 0; i < text.length; i++) {
+   
+    if( text[i].match(/[abcdefghijklmnopqrstuvwxyz0123456789]/) ) {
+      $("#signdata").append("<img style='width:15%; margin:1%;' src='https://technicalheist.github.io/english-to-sign-language/images/"+text[i]+".png' alt='Auslan letter for: "+text[i]+"' />")
+    }
+    else if(text[i].match(/[\s]/)) {
+      $("#signdata").append("<img style='width:15%; margin:0 1%;' src='https://technicalheist.github.io/english-to-sign-language/images/space.png' alt='space / pause' />")
+    }
+
+  }
+}
+
+$(document).on('keyup', '#keys', function(){
+    val = $(this).val();
+    forward(val);
+});
+</script>
+</body>
+</html>

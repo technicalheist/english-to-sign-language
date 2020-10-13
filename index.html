@@ -33,11 +33,11 @@ function forward(text) {
   $("#signdata").html("");
   
   for(var i = 0; i < text.length; i++) {
-   
-    if( text[i].match(/[abcdefghijklmnopqrstuvwxyz0123456789]/) ) {
-      $("#signdata").append("<img style='width:15%; margin:1%;' src='https://technicalheist.github.io/english-to-sign-language/images/"+text[i]+".png' alt='Auslan letter for: "+text[i]+"' />")
+    let str = text[i].toLowerCase();
+    if( str.match(/[abcdefghijklmnopqrstuvwxyz0123456789]/) ) {
+      $("#signdata").append("<img style='width:15%; margin:1%;' src='https://technicalheist.github.io/english-to-sign-language/images/"+str+".png' alt='Auslan letter for: "+str+"' />")
     }
-    else if(text[i].match(/[\s]/)) {
+    else if(str.match(/[\s]/)) {
       $("#signdata").append("<img style='width:15%; margin:0 1%;' src='https://technicalheist.github.io/english-to-sign-language/images/space.png' alt='space / pause' />")
     }
 
